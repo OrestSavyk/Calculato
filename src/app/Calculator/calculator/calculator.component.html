@@ -1,0 +1,20 @@
+<div class="main">
+  <div class="calculator">
+    <div class="container">
+      <div class="display">
+        <div class="display-top">
+          {{ currentNum }}
+        </div>
+      </div>
+      <div class="wrapper-buttons">
+        <button
+          *ngFor="let button of buttons"
+          [class]="button.class"
+          (click)="onButton(button)"
+        >
+          {{ button.value }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
