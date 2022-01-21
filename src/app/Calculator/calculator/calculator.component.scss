@@ -23,28 +23,30 @@
   color: white;
   background-color: rgb(15, 15, 15);
   border-radius: 20px;
+  padding: 25px;
+  box-sizing: border-box;
 
   .container {
-    width: 90%;
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5%;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    grid-template-rows: 32% 68%;
     .display {
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;
-      width: 100%;
-      text-align: end;
-      font-size: 60px;
-      height: 100%;
+      font-size: 62px;
+      font-weight: 200;
+      font-family: system-ui;
+      overflow: hidden;
+      padding-bottom: 20px;
     }
     .wrapper-buttons {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
+      justify-content: center;
       .btn-item {
         width: 60px;
         height: 60px;
@@ -67,6 +69,8 @@
         grid-column-end: 3;
         width: 100%;
         border-radius: 29px;
+        text-align: start;
+        padding-left: 25px;
       }
       .grayscale {
         background-color: rgb(163, 156, 156);
