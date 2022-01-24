@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { BUTTONS } from './calculator.constant';
 @Component({
   selector: 'app-calculator',
@@ -6,6 +6,16 @@ import { BUTTONS } from './calculator.constant';
   styleUrls: ['./calculator.component.scss'],
 })
 export class CalculatorComponent implements OnInit {
+  @HostListener('window:keypress', ['$event'])
+  keyEvent(keyEvent: KeyboardEvent) {
+    const button = this.buttons.find(
+      (btn) => btn.value.toString() === keyEvent.key
+    );
+    if (!button) {
+      return;
+    }
+    this.onButton(button);
+  }
   buttons = BUTTONS;
 
   buffer: any = 0;
@@ -15,7 +25,6 @@ export class CalculatorComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-
   private digitFunc(button: any) {
     if (this.buffer && this.user && !this.action) {
       this.storage = 0;
@@ -28,7 +37,8 @@ export class CalculatorComponent implements OnInit {
     }
     this.user = '';
     this.storage += button.value;
-    this.user = +this.storage;
+    // this.user = +this.storage;
+    this.user = this.storage;
     console.log(this.user);
   }
   private actionFunc(button: any) {
@@ -80,7 +90,6 @@ export class CalculatorComponent implements OnInit {
           console.log(this.buffer);
           console.log(this.action);
         }
-        // this.storage = '';
         break;
       case 'x':
         this.funcParent('*');
