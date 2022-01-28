@@ -37,7 +37,6 @@ export class CalculatorComponent implements OnInit {
     }
     this.user = '';
     this.storage += button.value;
-    // this.user = +this.storage;
     this.user = this.storage;
     console.log(this.user);
   }
@@ -121,11 +120,18 @@ export class CalculatorComponent implements OnInit {
             console.log(this.buffer);
             break;
           case '/':
-            this.buffer = this.buffer / +this.user;
-            this.user = this.buffer;
-            this.storage = 0;
-            this.action = '';
-            console.log(this.buffer);
+            if (+this.user !== 0) {
+              this.buffer = this.buffer / +this.user;
+              this.user = this.buffer;
+              this.storage = 0;
+              this.action = '';
+              console.log(this.buffer);
+            } else {
+              this.buffer = '0';
+              this.user = this.buffer;
+              this.action = '';
+              this.storage = 0;
+            }
             break;
         }
         if (!this.buffer) {
@@ -164,11 +170,18 @@ export class CalculatorComponent implements OnInit {
           console.log(this.buffer);
           break;
         case '/':
-          this.buffer = this.buffer / +this.user;
-          this.user = this.buffer;
-          this.storage = '';
-          this.action = value;
-          console.log(this.buffer);
+          if (this.user != 0) {
+            this.buffer = this.buffer / +this.user;
+            this.user = this.buffer;
+            this.storage = 0;
+            this.action = value;
+            console.log(this.buffer);
+          } else {
+            this.buffer = '0';
+            this.user = this.buffer;
+            this.action = value;
+            this.storage = 0;
+          }
           break;
       }
       this.action = value;
@@ -192,6 +205,8 @@ export class CalculatorComponent implements OnInit {
         this.user *= -1;
         break;
       case '%':
+        this.user /= 100;
+        this.buffer = this.user;
         break;
       case '.':
         this.isDot(button);
@@ -200,8 +215,12 @@ export class CalculatorComponent implements OnInit {
   }
   private isDot(button: any) {
     this.user = '';
-    if (this.user.split('').some((value: any) => value === '.')) {
-      return;
+    if (
+      this.storage
+        ? this.storage.split('').some((value: any) => value === '.')
+        : ''
+    ) {
+      this.user = this.storage;
     } else {
       if ((this.user = '0' || !this.user)) {
         this.user += '.';
