@@ -1,5 +1,12 @@
+<div class="button-close-wrapper">
+  <div class="button-close-container">
+    <a class="btn-close" (click)="isCalc()" #btnEvent>
+      <span class="btn-close__burger"></span>
+    </a>
+  </div>
+</div>
 <div class="main">
-  <div class="calculator">
+  <div class="calculator" [ngStyle]="{ 'left.px': changeP }">
     <div class="container">
       <div class="display">
         <div class="display-top">

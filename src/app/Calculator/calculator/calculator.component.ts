@@ -10,8 +10,18 @@ export class CalculatorComponent implements OnInit {
   buffer: number = 0;
   currentNum: number = 0;
   actionValue: any;
+  changeP = -320;
+  calc = false;
   constructor() {}
 
   ngOnInit(): void {}
+  isCalc() {
+    this.calc = !this.calc;
+    if (this.calc === true) {
+      this.changeP = 320;
+    } else {
+      this.changeP = -320;
+    }
+  }
   onButton(button: any) {}
 }
