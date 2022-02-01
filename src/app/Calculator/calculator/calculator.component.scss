@@ -1,13 +1,14 @@
-.button-close__wrapper {
+.button-close {
   width: 100%;
   height: 62px;
-  padding: 8px 20px;
-  box-sizing: border-box;
-  .button-close__container {
+  margin: 20px auto 60px;
+  &__container {
     display: flex;
     align-items: center;
     height: 100%;
-    .button-close__button {
+    padding: 5px 20px;
+    box-sizing: border-box;
+    &__button {
       width: 46px;
       height: 46px;
       border: 2px solid black;
@@ -23,7 +24,7 @@
         border: 2px solid rgb(219, 189, 14);
         color: black;
       }
-      .button-close__burger {
+      &__burger {
         width: 20px;
         height: 3px;
         position: absolute;
@@ -31,8 +32,8 @@
         transition: all 0.5s ease-in-out;
         border-radius: 2px;
       }
-      .button-close__burger::before,
-      .button-close__burger::after {
+      &__burger::before,
+      &__burger::after {
         content: "";
         width: 20px;
         height: 3px;
@@ -41,10 +42,10 @@
         transition: all 0.5s ease-in-out;
         border-radius: 2px;
       }
-      .button-close__burger::before {
+      &__burger::before {
         transform: translateY(-8px);
       }
-      .button-close__burger::after {
+      &__burger::after {
         transform: translateY(8px);
       }
     }
@@ -91,7 +92,6 @@
         border-radius: 50%;
         font-size: 19px;
         &:active {
-          opacity: 0.7;
           box-shadow: 0 0 2px 2px gray;
           background-color: rgb(175, 173, 168);
         }
@@ -101,8 +101,7 @@
         grid-column-end: 3;
         width: 100%;
         border-radius: 29px;
-        text-align: start;
-        padding-left: 25px;
+        text-align: center;
       }
       .grayscale {
         background-color: rgb(163, 156, 156);
@@ -110,7 +109,6 @@
       .orange {
         background-color: #ff9800;
         &:active {
-          opacity: 1;
           box-shadow: 0 0 2px 2px gray;
           color: #2c2b2be3;
           background-color: rgb(250, 249, 245);

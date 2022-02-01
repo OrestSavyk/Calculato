@@ -18,9 +18,9 @@ export class CalculatorComponent implements OnInit {
   isCalc() {
     this.calc = !this.calc;
     if (this.calc === true) {
-      this.changeP = 320;
+      this.changeP = 15;
     } else {
-      this.changeP = -320;
+      this.changeP = -100;
     }
   }
   onButton(button: any) {}
