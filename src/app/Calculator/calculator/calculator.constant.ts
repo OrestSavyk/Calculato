@@ -2,17 +2,17 @@ export const BUTTONS = [
   {
     class: 'btn-item grayscale',
     value: 'AC',
-    type: 'str',
+    type: 'other',
   },
   {
     class: 'btn-item grayscale',
     value: '+/-',
-    type: 'str',
+    type: 'other',
   },
   {
     class: 'btn-item grayscale',
     value: '%',
-    type: 'str',
+    type: 'other',
   },
   {
     class: 'btn-item orange',
@@ -87,7 +87,7 @@ export const BUTTONS = [
   {
     class: 'btn-item',
     value: '.',
-    type: 'str',
+    type: 'other',
   },
   {
     class: 'btn-item orange',
