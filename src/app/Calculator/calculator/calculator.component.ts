@@ -21,9 +21,19 @@ export class CalculatorComponent implements OnInit {
   user: any = 0;
   action: string = '';
   storage: any = 0;
+  changeP = -320;
+  calc = false;
   constructor() {}
 
   ngOnInit(): void {}
+  isCalc() {
+    this.calc = !this.calc;
+    if (this.calc === true) {
+      this.changeP = 15;
+    } else {
+      this.changeP = -100;
+    }
+  }
   private digitFunc(button: any) {
     if (this.buffer && this.user && !this.action) {
       this.storage = 0;

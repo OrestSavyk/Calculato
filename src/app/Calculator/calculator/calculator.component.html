@@ -1,20 +1,25 @@
-<div class="main">
-  <div class="calculator">
-    <div class="container">
-      <div class="display">
-        <div class="display-top">
-          {{ user | number: "1.0-4" }}
-        </div>
+<div class="button-close">
+  <div class="button-close__container">
+    <a class="button-close__container__button" (click)="isCalc()" #btnEvent>
+      <span class="button-close__container__button__burger"></span>
+    </a>
+  </div>
+</div>
+<div class="calculator" [ngStyle]="{ 'left.%': changeP }">
+  <div class="container">
+    <div class="display">
+      <div class="display-top">
+        {{ user | number: "1.0-4" }}
       </div>
-      <div class="wrapper-buttons">
-        <button
-          *ngFor="let button of buttons"
-          [class]="button.class"
-          (click)="onButton(button)"
-        >
-          {{ button.value }}
-        </button>
-      </div>
+    </div>
+    <div class="wrapper-buttons">
+      <button
+        *ngFor="let button of buttons"
+        [class]="button.class"
+        (click)="onButton(button)"
+      >
+        {{ button.value }}
+      </button>
     </div>
   </div>
 </div>
