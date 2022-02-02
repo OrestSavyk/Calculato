@@ -17,7 +17,6 @@ export class CalculatorComponent implements OnInit {
     this.onButton(button);
   }
   buttons = BUTTONS;
-
   buffer: any = 0;
   user: any = 0;
   action: string = '';
@@ -38,7 +37,6 @@ export class CalculatorComponent implements OnInit {
     this.user = '';
     this.storage += button.value;
     this.user = this.storage;
-    console.log(this.user);
   }
   private actionFunc(button: any) {
     switch (button.value) {
@@ -53,28 +51,24 @@ export class CalculatorComponent implements OnInit {
               this.user = this.buffer;
               this.action = '+';
               this.storage = '';
-              console.log(this.buffer);
               break;
             case '-':
               this.buffer = this.buffer - +this.user;
               this.user = this.buffer;
               this.action = '-';
               this.storage = '';
-              console.log(this.buffer);
               break;
             case '*':
               this.buffer = this.buffer * +this.user;
               this.user = this.buffer;
               this.storage = '';
               this.action = '-';
-              console.log(this.buffer);
               break;
             case '/':
               this.buffer = this.buffer / +this.user;
               this.user = this.buffer;
               this.storage = '';
               this.action = '-';
-              console.log(this.buffer);
               break;
           }
           this.action = '-';
@@ -86,8 +80,6 @@ export class CalculatorComponent implements OnInit {
             this.storage = '';
             this.action = '-';
           }
-          console.log(this.buffer);
-          console.log(this.action);
         }
         break;
       case 'x':
@@ -102,7 +94,6 @@ export class CalculatorComponent implements OnInit {
             this.buffer = this.buffer + +this.user;
             this.user = this.buffer;
             this.action = '';
-            console.log(this.buffer);
 
             break;
           case '-':
@@ -110,14 +101,14 @@ export class CalculatorComponent implements OnInit {
             this.user = this.buffer;
             this.storage = 0;
             this.action = '';
-            console.log(this.buffer);
+
             break;
           case '*':
             this.buffer = this.buffer * +this.user;
             this.user = this.buffer;
             this.storage = 0;
             this.action = '';
-            console.log(this.buffer);
+
             break;
           case '/':
             if (+this.user !== 0) {
@@ -125,7 +116,6 @@ export class CalculatorComponent implements OnInit {
               this.user = this.buffer;
               this.storage = 0;
               this.action = '';
-              console.log(this.buffer);
             } else {
               this.buffer = '0';
               this.user = this.buffer;
@@ -153,21 +143,18 @@ export class CalculatorComponent implements OnInit {
           this.user = this.buffer;
           this.action = '+';
           this.storage = '';
-          console.log(this.buffer);
           break;
         case '-':
           this.buffer = this.buffer - +this.user;
           this.user = this.buffer;
           this.action = value;
           this.storage = '';
-          console.log(this.buffer);
           break;
         case '*':
           this.buffer = this.buffer * +this.user;
           this.user = this.buffer;
           this.storage = '';
           this.action = value;
-          console.log(this.buffer);
           break;
         case '/':
           if (this.user != 0) {
@@ -175,7 +162,6 @@ export class CalculatorComponent implements OnInit {
             this.user = this.buffer;
             this.storage = 0;
             this.action = value;
-            console.log(this.buffer);
           } else {
             this.buffer = '0';
             this.user = this.buffer;
@@ -188,8 +174,6 @@ export class CalculatorComponent implements OnInit {
     } else {
       this.storage = '';
       this.action = value;
-      console.log(this.buffer);
-      console.log(this.action);
     }
   }
   private otherFunc(button: any) {
@@ -224,7 +208,6 @@ export class CalculatorComponent implements OnInit {
     } else {
       if ((this.user = '0' || !this.user)) {
         this.user += '.';
-        console.log(this.user);
       } else {
         this.storage += button.value;
       }
