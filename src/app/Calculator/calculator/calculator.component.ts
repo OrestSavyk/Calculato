@@ -208,7 +208,7 @@ export class CalculatorComponent implements OnInit {
     }
   }
   private isDot(button: any) {
-    this.user = '';
+    this.user = ''; 
     if (
       this.storage
         ? this.storage.split('').some((value: any) => value === '.')
