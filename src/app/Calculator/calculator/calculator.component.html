@@ -5,13 +5,15 @@
     </a>
   </div>
 </div>
+
 <div class="calculator" [ngStyle]="{ 'left.%': changeP }">
-  <div class="calculator__container" >
+  <div class="calculator__container">
     <div class="calculator__body">
       <div class="calculator__display">
         {{ user | number: "1.0-4" }}
       </div>
     </div>
+
     <div class="calculator__wrapper-buttons">
       <button
         *ngFor="let button of buttons"
