@@ -21,47 +21,47 @@ export class CalculatorComponent implements OnInit {
 
   buttons = BUTTONS;
 
+  storage: any = 0;
+
   buffer: any = 0;
 
-  user: any = 0;
+  displayValue: any = 0;
 
   action: string = '';
 
-  storage: any = 0;
+  leftPx = -320;
 
-  changeP = -320;
-
-  calc = false;
+  isCalculator = false;
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  isCalc() {
-    this.calc = !this.calc;
+  isShowCalculator() {
+    this.isCalculator = !this.isCalculator;
 
-    if (this.calc === true) {
-      this.changeP = 15;
+    if (this.isCalculator === true) {
+      this.leftPx = 15;
     } else {
-      this.changeP = -100;
+      this.leftPx = -100;
     }
   }
 
   private digitFunc(button: any) {
-    if (this.buffer && this.user && !this.action) {
+    if (this.buffer && this.displayValue && !this.action) {
       this.storage = 0;
       this.buffer = 0;
-      this.user = '';
+      this.displayValue = '';
       this.action = '';
     }
 
     if (!this.buffer && this.action) {
-      this.buffer += +this.user;
+      this.buffer += +this.displayValue;
     }
 
-    this.user = '';
+    this.displayValue = '';
     this.storage += button.value;
-    this.user = this.storage;
+    this.displayValue = this.storage;
   }
 
   private actionFunc(button: any) {
@@ -75,29 +75,29 @@ export class CalculatorComponent implements OnInit {
         if (this.buffer) {
           switch (this.action) {
             case '+':
-              this.buffer = this.buffer + +this.user;
-              this.user = this.buffer;
+              this.buffer = this.buffer + +this.displayValue;
+              this.displayValue = this.buffer;
               this.action = '+';
               this.storage = '';
               break;
 
             case '-':
-              this.buffer = this.buffer - +this.user;
-              this.user = this.buffer;
+              this.buffer = this.buffer - +this.displayValue;
+              this.displayValue = this.buffer;
               this.action = '-';
               this.storage = '';
               break;
 
             case '*':
-              this.buffer = this.buffer * +this.user;
-              this.user = this.buffer;
+              this.buffer = this.buffer * +this.displayValue;
+              this.displayValue = this.buffer;
               this.storage = '';
               this.action = '-';
               break;
 
             case '/':
-              this.buffer = this.buffer / +this.user;
-              this.user = this.buffer;
+              this.buffer = this.buffer / +this.displayValue;
+              this.displayValue = this.buffer;
               this.storage = '';
               this.action = '-';
               break;
@@ -126,37 +126,37 @@ export class CalculatorComponent implements OnInit {
       case '=':
         switch (this.action) {
           case '+':
-            this.buffer = this.buffer + +this.user;
-            this.user = this.buffer;
+            this.buffer = this.buffer + +this.displayValue;
+            this.displayValue = this.buffer;
             this.action = '';
 
             break;
 
           case '-':
-            this.buffer = this.buffer - +this.user;
-            this.user = this.buffer;
+            this.buffer = this.buffer - +this.displayValue;
+            this.displayValue = this.buffer;
             this.storage = 0;
             this.action = '';
 
             break;
 
           case '*':
-            this.buffer = this.buffer * +this.user;
-            this.user = this.buffer;
+            this.buffer = this.buffer * +this.displayValue;
+            this.displayValue = this.buffer;
             this.storage = 0;
             this.action = '';
 
             break;
 
           case '/':
-            if (+this.user !== 0) {
-              this.buffer = this.buffer / +this.user;
-              this.user = this.buffer;
+            if (+this.displayValue !== 0) {
+              this.buffer = this.buffer / +this.displayValue;
+              this.displayValue = this.buffer;
               this.storage = 0;
               this.action = '';
             } else {
               this.buffer = '0';
-              this.user = this.buffer;
+              this.displayValue = this.buffer;
               this.action = '';
               this.storage = 0;
             }
@@ -165,10 +165,10 @@ export class CalculatorComponent implements OnInit {
         }
 
         if (!this.buffer) {
-          this.user = +this.storage;
-          this.buffer = this.user;
+          this.displayValue = +this.storage;
+          this.buffer = this.displayValue;
         } else {
-          this.user = this.buffer;
+          this.displayValue = this.buffer;
           this.action = '';
           this.storage = 0;
         }
@@ -181,38 +181,38 @@ export class CalculatorComponent implements OnInit {
     if (this.buffer) {
       switch (this.action) {
         case '+':
-          this.buffer = this.buffer + +this.user;
-          this.user = this.buffer;
+          this.buffer = this.buffer + +this.displayValue;
+          this.displayValue = this.buffer;
           this.action = '+';
           this.storage = '';
 
           break;
 
         case '-':
-          this.buffer = this.buffer - +this.user;
-          this.user = this.buffer;
+          this.buffer = this.buffer - +this.displayValue;
+          this.displayValue = this.buffer;
           this.action = value;
           this.storage = '';
 
           break;
 
         case '*':
-          this.buffer = this.buffer * +this.user;
-          this.user = this.buffer;
+          this.buffer = this.buffer * +this.displayValue;
+          this.displayValue = this.buffer;
           this.storage = '';
           this.action = value;
 
           break;
 
         case '/':
-          if (this.user != 0) {
-            this.buffer = this.buffer / +this.user;
-            this.user = this.buffer;
+          if (this.displayValue != 0) {
+            this.buffer = this.buffer / +this.displayValue;
+            this.displayValue = this.buffer;
             this.storage = 0;
             this.action = value;
           } else {
             this.buffer = '0';
-            this.user = this.buffer;
+            this.displayValue = this.buffer;
             this.action = value;
             this.storage = 0;
           }
@@ -233,20 +233,20 @@ export class CalculatorComponent implements OnInit {
       case 'AC':
         this.storage = 0;
         this.buffer = 0;
-        this.user = 0;
+        this.displayValue = 0;
         this.action = '';
 
         break;
 
       case '+/-':
         this.buffer *= -1;
-        this.user *= -1;
+        this.displayValue *= -1;
 
         break;
 
       case '%':
-        this.user /= 100;
-        this.buffer = this.user;
+        this.displayValue /= 100;
+        this.buffer = this.displayValue;
 
         break;
 
@@ -258,23 +258,23 @@ export class CalculatorComponent implements OnInit {
   }
 
   private isDot(button: any) {
-    this.user = '';
+    this.displayValue = '';
 
     if (
       this.storage
         ? this.storage.split('').some((value: any) => value === '.')
         : ''
     ) {
-      this.user = this.storage;
+      this.displayValue = this.storage;
     } else {
-      if ((this.user = '0' || !this.user)) {
-        this.user += '.';
+      if ((this.displayValue = '0' || !this.displayValue)) {
+        this.displayValue += '.';
       } else {
         this.storage += button.value;
       }
 
       this.storage += button.value;
-      this.user = this.storage;
+      this.displayValue = this.storage;
     }
   }
 
